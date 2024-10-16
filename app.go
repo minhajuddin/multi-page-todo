@@ -9,7 +9,8 @@ import (
 
 type requestHandler struct{}
 
-func (h *requestHandler) ServeFunc(w http.ResponseWriter, r *http.Request) {
+func (h *requestHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log.Printf("%s\t[%s]\t%s\n", r.RemoteAddr, r.Method, r.URL.Path)
 	fmt.Fprintf(w, "<!doctype html><h1>Welcome to the thunderdome!</h1>")
 }
 
